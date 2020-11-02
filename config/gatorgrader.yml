@@ -1,0 +1,94 @@
+---
+name: cs102-F2020-lab7
+break: true
+indent: 4
+---
+
+# Learn more about GatorGrader and its supported checks by visiting this web site:
+# https://github.com/GatorEducator/gatorgrader
+
+# Explanation:
+# --> a check without an "--exact" runs a count for an entity as an "at least"
+# --> checks below a file in a specified directory are for that specific file and directory
+# --> checks that appear stand-alone are for an entire Git repository
+
+# --> check the Python program
+datauniquifier/datauniquifier/__main__.py:
+    ConfirmFileExists
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+    MatchFileFragment --fragment "Option(...)" --count 3 --exact
+    MatchFileFragment --fragment "run(main)" --count 1 --exact
+    MatchFileFragment --fragment "getattr(" --count 1 --exact
+    MatchFileFragment --fragment "function_to_call(" --count 1 --exact
+    MatchFileFragment --fragment "from pathlib import Path" --count 1 --exact
+    MatchFileFragment --fragment "format_bytes" --count 1
+    CountMultipleLineComments --language Python --count 2
+    CountSingleLineComments --language Python --count 16
+
+# --> check the Python program
+datauniquifier/datauniquifier/uniquify.py:
+    ConfirmFileExists
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+    MatchFileFragment --fragment "@timing" --count 3 --exact
+    CountMultipleLineComments --language Python --count 3
+    CountSingleLineComments --language Python --count 7
+
+# --> check the Python program
+datauniquifier/tests/test_uniquify.py:
+    ConfirmFileExists
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+    MatchFileFragment --fragment "test_" --count 3
+    CountMultipleLineComments --language Python --count 4
+
+# --> check the Python program
+datauniquifier/tests/test_analyze.py:
+    ConfirmFileExists
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+    MatchFileFragment --fragment "test_" --count 6
+    CountMultipleLineComments --language Python --count 7
+
+# --> check the Python program
+datauniquifier/tests/test_extract.py:
+    ConfirmFileExists
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+    MatchFileFragment --fragment "test_" --count 2
+    CountMultipleLineComments --language Python --count 3
+
+# --> check the technical writing for various characteristics
+writing/reflection.md:
+    ConfirmFileExists
+    CountFileWords --count 800
+    CountMarkdownTags --tag "heading" --count 10 --exact
+    CountMarkdownTags --tag "code_block" --count 5 --exact
+    MatchFileFragment --fragment "TODO" --count 0 --exact
+    MatchFileFragment --fragment "Add Your Name Here" --count 0 --exact
+
+# --> check that the number of commits in the Git repository is beyond a threshold
+CountCommits --count 5
+
+# --> check that the program executes correctly and produces correct number of lines of output
+ExecuteCommand --command "cd datauniquifier; poetry install; poetry run python datauniquifier --approach setcomprehension --column 1 --data-file inputs/data.txt; cd .."
+
+# Output of the Python Program:
+
+# The chosen approach to uniquify the file is: setcomprehension
+
+# The data file that contains the input is: inputs/data.txt
+
+# The data file contains 100 data values in it!
+# Let's do some uniquification! 🚀
+
+# So, was this an efficient approach to uniquifying the data? 🔍
+
+# The function 'unique_setcomprehension' took: 0.0000 sec
+
+# Estimated overall memory according to the operating system:
+#    19.2734375 megabytes
+
+# Estimated peak memory according to the operating system:
+#    33.8828125 megabytes
+
+# So, did this remove a lot of duplicate data? 🔍
+
+# The number of values removed from the data: 10
+# The percent reduction due to uniquification: 10.00%
