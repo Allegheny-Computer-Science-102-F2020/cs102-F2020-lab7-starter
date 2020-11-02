@@ -1,4 +1,4 @@
-"""Perform uniquification on the provided input string."""
+"""Perform uniquification on the provided input list."""
 
 from typing import List
 
